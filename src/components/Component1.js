@@ -1,6 +1,6 @@
 import React from 'react';
 
-class QuizClassifica extends React.Component {
+class Component1 extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -14,9 +14,9 @@ class QuizClassifica extends React.Component {
 
   render() {
     return (
-        <p>QuizClassifica works!</p>
+        <p>Component1 works!</p>
       );
   }
 }
 
-export default QuizClassifica;
+export default Component1;

@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 
 import '../login.css'
 
-const baseUrl = 'https://pge-twitch-api.tokiostudio.it/lol/v2';
+const baseUrl = 'https://your-backend.com/v1';
 
 class Login extends React.Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class Login extends React.Component {
             <div className="card login-card">
               <div className="row justify-content-center">
                 <div className="col-12">
-                <h3 className="login-title">PGE ADMIN</h3>
+                <h3 className="login-title">Admin Page</h3>
                 </div>
               </div>
               <div  className="row justify-content-center">
@@ -127,7 +127,7 @@ class Login extends React.Component {
     try {data = await response.json()}
     catch (e) {console.log(e.message)}
     if (data && data.token)
-    localStorage.setItem('pge-twitch-admin-token', data.token);
+    localStorage.setItem('appname-admin-token', data.token);
     this.props.callBack();
 
   }

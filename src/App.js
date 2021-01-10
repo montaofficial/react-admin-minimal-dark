@@ -3,22 +3,17 @@ import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-do
 import jwt_decode from 'jwt-decode';
 
 import Settings from './components/Settings';
-import QuizHome from './components/QuizHome';
-import QuizNew from './components/QuizNew';
-import QuizSolve from './components/QuizSolve';
-import QuizClassifica from './components/QuizClassifica';
-import QuizList from './components/QuizList';
-import Stats from './components/Stats';
+import Component1 from './components/Component1';
+import Component2 from './components/Component2';
 
 import Login from './components/Login';
 
-import logo from './logo.png';
+import logo from './img/logo-white.png';
 import './App.css';
-
 
 const AuthRoute = props => {
   const { type } = props;
-  const isAuthUser = localStorage.getItem('pge-twitch-admin-token');
+  const isAuthUser = localStorage.getItem('appname-admin-token');
   if (type === "guest" && isAuthUser) return <Redirect to="/" />;
   else if (type === "private" && !isAuthUser) return <Redirect to="/login" />;
 
@@ -30,32 +25,27 @@ class App extends React.Component {
       super(props);
 
       let user;
-      const token = localStorage.getItem('pge-twitch-admin-token');
+      const token = localStorage.getItem('appname-admin-token');
       if (token) user = jwt_decode(token);
 
       this.state = {
         sideBar: false,
         user: user,
       };
-      
-      
-      
-      
-      
-      
+
       this.menuRoutes = [
         {
           name: "Settings",
           path: "/settings",
           component: Settings
         },{
-          name: "Quiz",
-          path: "/quiz",
-          component: QuizHome
+          name: "Component 1",
+          path: "/comp1",
+          component: Component1
         },{
-          name: "Statistiche",
-          path: "/stats",
-          component: Stats
+          name: "Component 2",
+          path: "/comp2",
+          component: Component2
         },
       ];
 
@@ -68,7 +58,7 @@ class App extends React.Component {
 
   updateToken() {
     let user;
-      const token = localStorage.getItem('pge-twitch-admin-token');
+      const token = localStorage.getItem('appname-admin-token');
       if (token) user = jwt_decode(token);
 
       this.setState(()=>{return {
@@ -152,7 +142,7 @@ class App extends React.Component {
 
   
   logout() {
-    localStorage.removeItem('pge-twitch-admin-token');
+    localStorage.removeItem('appname-admin-token');
     this.setState(() => {return ({ user: null})});
   }
 }

@@ -8,6 +8,10 @@ import {
 } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+
 import Settings from './components/Settings'
 import Component1 from './components/Component1'
 import Component2 from './components/Component2'
@@ -16,6 +20,7 @@ import Login from './components/Login'
 
 import logo from './img/logo-white.png'
 import './App.css'
+import Dashboard from './components/Dashboard'
 
 const AuthRoute = props => {
   const { type } = props
@@ -28,6 +33,7 @@ const AuthRoute = props => {
 
 function App() {
   let [user, setUser] = useState(null)
+  let [sideBar, setSideBar] = useState(true)
 
   useEffect(() => {
     try {
@@ -45,58 +51,72 @@ function App() {
   return (
     <BrowserRouter>
       <>
-        <header className="navbar navbar-dark">
-          <div className="nav-item">
-            {this.state.user ? (
-              <div
-                className="nav-link"
-                onClick={() => this.setState({ sideBar: !this.state.sideBar })}
-              >
+        {false ? (
+          <header className="navbar navbar-dark">
+            <div className="nav-item">
+              <div className="nav-link" onClick={() => setSideBar(!sideBar)}>
                 <i class="fas fa-bars navbar-icon"></i>
               </div>
-            ) : null}
-          </div>
-
-          <div className="nav-item">
-            <img src={logo} className="logo-small"></img>
-          </div>
-
-          <div className="nav-item">
-            {this.state.user ? (
-              <div className="nav-link" onClick={() => this.logout()}>
+            </div>
+            <div className="nav-item">
+              <img src={logo} className="logo-small" alt="logo app"></img>
+            </div>
+            <div className="nav-item">
+              <div className="nav-link" onClick={() => logout()}>
                 <i class="fas fa-sign-out-alt navbar-icon"></i>
               </div>
-            ) : null}
-          </div>
-        </header>
-        {this.state.sideBar && this.state.user ? (
+            </div>
+          </header>
+        ) : null}
+        {sideBar && user ? (
           <div id="sidebarMenu" className="sidebar">
             <div className="nav-item">
+              <NavLink
+                to="/dashboard"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img src={logo} className="logo-sidebar" alt="link home"></img>
+              </NavLink>
               <NavLink
                 to="/settings"
                 className="nav-link"
                 activeClassName="active"
               >
-                S
+                <FontAwesomeIcon
+                  icon={icon({ name: 'gauge', style: 'solid' })}
+                />
               </NavLink>
               <NavLink
                 to="/component1"
                 className="nav-link"
                 activeClassName="active"
               >
-                1
+                <FontAwesomeIcon
+                  icon={icon({ name: 'users', style: 'solid' })}
+                />
               </NavLink>
               <NavLink
                 to="/component2"
                 className="nav-link"
                 activeClassName="active"
               >
-                2
+                <FontAwesomeIcon
+                  icon={icon({ name: 'gear', style: 'solid' })}
+                />
               </NavLink>
+            </div>
+            <div className="nav-link" onClick={() => logout()}>
+              <FontAwesomeIcon
+                icon={icon({ name: 'right-from-bracket', style: 'solid' })}
+              />
             </div>
           </div>
         ) : null}
-        <main id="main-appplication">
+        <main
+          id="main-appplication"
+          className={sideBar && user ? 'main-side-opened' : 'main-side-closed'}
+        >
           <Switch>
             <AuthRoute path="/login" type="guest">
               <Login setUser={setUser} />
@@ -113,13 +133,14 @@ function App() {
               component={Component2}
               type="private"
             />
+            <AuthRoute path="/dashboard" component={Dashboard} type="private" />
 
             <Route
               path="/"
               render={({ location }) => (
                 <Redirect
                   to={{
-                    pathname: this.defautRoute,
+                    pathname: '/dashboard',
                     state: { from: location },
                   }}
                 />

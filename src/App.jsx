@@ -12,16 +12,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
-import Settings from './components/Settings'
-import Component1 from './components/Component1'
-import Component2 from './components/Component2'
+import Settings from './pages/Settings'
+import Component1 from './pages/Component1'
+import Component2 from './pages/Component2'
 
-import Login from './components/Login'
+import Login from './pages/Login'
 
 import logo from './img/logo-white.png'
 import './App.css'
-import Dashboard from './components/Dashboard'
-import ComponentWebsocket from './components/ComponentWebsocket'
+import Dashboard from './pages/Dashboard'
+import ComponentWebsocket from './pages/ComponentWebsocket'
 
 const AuthRoute = props => {
   const { type } = props

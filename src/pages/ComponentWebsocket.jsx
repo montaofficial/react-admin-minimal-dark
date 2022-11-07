@@ -22,6 +22,7 @@ function ComponentWebsocket(props) {
     function onClose() {
       setStatus('disconnected')
       setTimeout(() => {
+        if (window.ws == 'disconnect') return
         setStatus('connecting')
         window.ws = new WebSocket(wssUrl)
         window.ws.onmessage = parser
@@ -42,7 +43,7 @@ function ComponentWebsocket(props) {
           window.ws.onopen = () => {}
           window.ws.onclose = () => {}
           window.ws.close()
-          window.ws = undefined
+          window.ws = 'disconnect'
         } catch (e) {
           console.log(e.message || e)
         }

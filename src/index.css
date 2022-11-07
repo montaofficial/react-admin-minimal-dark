@@ -1,16 +1,13 @@
-body {
+html,
+body,
+#root {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2e3135;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: #f7f7f7;
 }
 
 .nav-link {
@@ -18,10 +15,14 @@ code {
   cursor: pointer;
 }
 
-.card {
-  background-color: #212529;
-}
-
-p, h1, h2, h3, h4, h5, h6, a {
-  color: #fff;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  color: #0c0b0b;
+  margin: 0;
 }

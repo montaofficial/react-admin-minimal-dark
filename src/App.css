@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100;200;500;600&display=swap');
+
 .logo-small {
   padding-left: 10px;
   height: 3.4rem;
@@ -5,11 +7,57 @@
 }
 
 .sidebar {
-  background-color: #24292e;
-  border-radius: 0px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  padding-bottom: 18px;
+  top: 18px;
+  left: 24px;
+  width: 80px;
+  background-color: #0c0b0b;
+  border-radius: 12px;
+  padding: 4px 8px;
+  position: fixed;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 20px #00000099;
+  animation: fadeInAnimation ease-in-out 0.6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    left: -100px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sidebar .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.sidebar .nav-link {
+  margin: 0;
+  padding: 18px 0px;
+  color: white;
+  font-size: 28px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+  color: #ffd500;
+  transform: scale(1.1);
+}
+
+.logo-sidebar {
+  padding: 0;
+  height: 2.8rem;
 }
 
 .navbar-brand {
@@ -17,7 +65,14 @@
 }
 
 #main-appplication {
-  padding-top: 20px;
+  min-height: 80%;
+  padding-top: 18px;
+}
+
+#main-appplication.main-side-opened {
+  padding-right: 24px;
+  padding-left: 160px;
+  height: auto;
 }
 
 .navbar-icon {
@@ -26,4 +81,57 @@
 
 .navbar {
   height: 4rem;
+}
+
+.wss-status {
+  position: fixed;
+  left: 8px;
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.wss-status.wss-status-connected {
+  background-color: green;
+}
+
+.wss-status.wss-status-disconnected {
+  background-color: red;
+}
+
+.wss-status.wss-status-connecting {
+  background-color: yellow;
+}
+
+.card {
+  margin: 20px;
+  padding: 24px 42px;
+  background-color: #e9e9e9;
+  border-radius: 12px;
+  position: relative;
+  height: 120px;
+}
+
+.card h1 {
+  margin-top: 28px;
+  font-family: 'Baloo Bhai 2';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.card h2 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.card .image-fix-dx {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
 }

@@ -35,6 +35,12 @@
   padding: 18px 0px;
   color: white;
   font-size: 28px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+  color: #ffd500;
+  transform: scale(1.1);
 }
 
 .logo-sidebar {

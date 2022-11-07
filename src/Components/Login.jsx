@@ -6,7 +6,7 @@ import logo from '../img/logo-white.png'
 
 import '../login.css'
 
-const baseUrl = 'https://your-backend.com/v1'
+const baseUrl = 'https://your-backend.com/api'
 
 function Login(props) {
   let [username, setUsername] = useState('')

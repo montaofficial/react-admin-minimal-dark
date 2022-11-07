@@ -20,6 +20,18 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 0px 20px #00000099;
+  animation: fadeInAnimation ease-in-out 0.6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    left: -100px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .sidebar .nav-item {
@@ -53,8 +65,8 @@
 }
 
 #main-appplication {
-  height: 100%;
-  padding: 0px;
+  min-height: 80%;
+  padding-top: 18px;
 }
 
 #main-appplication.main-side-opened {
@@ -69,4 +81,26 @@
 
 .navbar {
   height: 4rem;
+}
+
+.wss-status {
+  position: fixed;
+  left: 8px;
+  top: 8px;
+  height: 12px;
+  width: 12px;
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.wss-status.wss-status-connected {
+  background-color: green;
+}
+
+.wss-status.wss-status-disconnected {
+  background-color: red;
+}
+
+.wss-status.wss-status-connecting {
+  background-color: yellow;
 }

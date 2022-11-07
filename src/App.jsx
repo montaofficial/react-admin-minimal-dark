@@ -21,6 +21,7 @@ import Login from './components/Login'
 import logo from './img/logo-white.png'
 import './App.css'
 import Dashboard from './components/Dashboard'
+import ComponentWebsocket from './components/ComponentWebsocket'
 
 const AuthRoute = props => {
   const { type } = props
@@ -84,7 +85,7 @@ function App() {
                 activeClassName="active"
               >
                 <FontAwesomeIcon
-                  icon={icon({ name: 'gauge', style: 'solid' })}
+                  icon={icon({ name: 'gear', style: 'solid' })}
                 />
               </NavLink>
               <NavLink
@@ -102,7 +103,16 @@ function App() {
                 activeClassName="active"
               >
                 <FontAwesomeIcon
-                  icon={icon({ name: 'gear', style: 'solid' })}
+                  icon={icon({ name: 'gauge', style: 'solid' })}
+                />
+              </NavLink>
+              <NavLink
+                to="/wss-component"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <FontAwesomeIcon
+                  icon={icon({ name: 'wifi', style: 'solid' })}
                 />
               </NavLink>
             </div>
@@ -131,6 +141,11 @@ function App() {
             <AuthRoute
               path="/component2"
               component={Component2}
+              type="private"
+            />
+            <AuthRoute
+              path="/wss-component"
+              component={ComponentWebsocket}
               type="private"
             />
             <AuthRoute path="/dashboard" component={Dashboard} type="private" />
